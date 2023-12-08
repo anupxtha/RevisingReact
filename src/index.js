@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { Testing } from './Testing';
+import File from './file';
+import { books } from './books';
+import Book from './book';
 
 //Variables
 const img =
@@ -24,51 +28,18 @@ const secondBook = {
 function Greeting() {
   return (
     <section className='bookList'>
+      {books.map((book, index) => {
+        return <Book key={index} {...book}></Book>;
+      })}
+      <Testing />
       <Book bookImg={img} bookTitle={title} bookAuthor={author} />
-      <Book book={firstBook} />
+      <Book book={firstBook}>
+        <File />
+      </Book>
       <Book book={secondBook} />
     </section>
   );
 }
-
-const Book = props => {
-  console.log(props);
-  return (
-    <article className='book'>
-      {props.book ? (
-        <>
-          {/* Props for Objects */}
-          <img src={props.book.img} alt='' />
-          <h1>{props.book.title}</h1>
-          <h4
-            style={{
-              color: '#617d98',
-              fontSize: '0.75rem',
-              marginTop: '0.25rem',
-            }}
-          >
-            {props.book.author}
-          </h4>
-        </>
-      ) : (
-        <>
-          {/* Props for Variables */}
-          <img src={props.bookImg} alt='' />
-          <h1>{props.bookTitle}</h1>
-          <h4
-            style={{
-              color: '#617d98',
-              fontSize: '0.75rem',
-              marginTop: '0.25rem',
-            }}
-          >
-            {props.bookAuthor}
-          </h4>
-        </>
-      )}
-    </article>
-  );
-};
 
 // // It is simpler to up functional Component Greeting // //
 // const Greeting = () => {

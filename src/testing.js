@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-function testing() {
-  return (
-    <div>testing</div>
-  )
+export function Testing() {
+  return <p>testing</p>;
 }
-
-export default testing
